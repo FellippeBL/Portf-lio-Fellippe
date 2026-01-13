@@ -3,12 +3,12 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 const canvas = document.querySelector('#bg-canvas');
 const scene = new THREE.Scene();
 
-// Deep black background
-scene.background = new THREE.Color(0x000000);
-scene.fog = new THREE.FogExp2(0x000000, 0.03); // Increased fog for depth
+// Deep slightly blueish background (Midnight Blue/Slate) 
+// The image has a dark but visible blue-grey tone
+scene.background = new THREE.Color(0x0b1026);
+scene.fog = new THREE.FogExp2(0x0b1026, 0.02);
 
 const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-// Position camera to look at the wave from a nice angle
 camera.position.set(0, 5, 20);
 camera.lookAt(0, 0, 0);
 
@@ -17,36 +17,38 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0x000000);
+// Ambient light needs to be stronger to show the non-highlighted parts
+const ambientLight = new THREE.AmbientLight(0x111111, 2);
 scene.add(ambientLight);
 
-// Blue Point Light - The "Source"
-const pointLight = new THREE.PointLight(0x3b82f6, 150, 100);
-pointLight.position.set(0, 10, 10);
+// Primary "Moonlight" - Cool Blue/White
+const pointLight = new THREE.PointLight(0xa5c5ff, 200, 100);
+pointLight.position.set(5, 15, 10);
 scene.add(pointLight);
 
-// Secondary Light for definition
-const backLight = new THREE.PointLight(0x1d4ed8, 50, 50);
-backLight.position.set(-10, 5, -10);
+// Secondary highlight (warm or teal) to give dimension
+const backLight = new THREE.PointLight(0x3b82f6, 100, 80);
+backLight.position.set(-10, 5, -5);
 scene.add(backLight);
 
 // Wave Parameters
-const ROWS = 50;
-const COLS = 50;
+const ROWS = 60; // Increased density
+const COLS = 60;
 const COUNT = ROWS * COLS;
-const SPACING = 0.8;
+const SPACING = 0.6; // Closer spacing for "solid" look
 
-// Geometry: A thin vertical bar
-const geometry = new THREE.BoxGeometry(0.2, 5, 0.2); // Tall and thin
-geometry.translate(0, 2.5, 0); // Pivot at bottom
+// Geometry: Thinner, smoother bars
+const geometry = new THREE.BoxGeometry(0.1, 5, 0.1);
+geometry.translate(0, 2.5, 0);
 
-// Material: Highly reflective metal
+// Material: Glassy/Metallic
 const material = new THREE.MeshPhysicalMaterial({
-    color: 0x111111,
-    metalness: 0.9,
-    roughness: 0.2,
+    color: 0x223355, // Base color isn't black, it's dark blue
+    metalness: 0.8,
+    roughness: 0.1,
     clearcoat: 1.0,
     clearcoatRoughness: 0.1,
+    emissive: 0x000011, // Slight glow
 });
 
 const mesh = new THREE.InstancedMesh(geometry, material, COUNT);
