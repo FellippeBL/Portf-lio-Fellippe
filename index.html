@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Editor & Designer</title>
+    <meta name="description" content="Portfólio profissional de edição de vídeo e design gráfico.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">PORTFOLIO<span class="dot">.</span></a>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#work">Trabalhos</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 3D Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <main class="snap-container">
+        <!-- Hero Section -->
+        <section class="fullscreen-section hero-fs">
+            <div class="hero-content">
+                <h1 class="fade-in">Visual <span class="highlight">Storyteller</span></h1>
+                <p class="fade-in delay-1">Edição de Vídeo • Motion Graphics • Design</p>
+                <a href="#work" class="btn primary fade-in delay-2">Scroll to Explore</a>
+            </div>
+        </section>
+
+        <!-- Project 1: Harry Potter -->
+        <section id="work" class="fullscreen-section project-fs">
+            <div class="fs-content">
+                <div class="project-details">
+                    <span class="project-tag">Case Study</span>
+                    <h2>Harry Potter: Cursed Child</h2>
+                    <p>Immersive Web Experience & Visual Concept</p>
+                    <a href="project.html" class="btn primary">View Case Study</a>
+                </div>
+                <!-- Large Video Background/Card -->
+                <div class="video-card-fs">
+                    <div class="placeholder-img"
+                        style="background-image: url('assets/case_study/harry.png'); background-position: top;"></div>
+                    <div class="play-btn"><i data-lucide="eye"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project 2 (Placeholder) -->
+        <section class="fullscreen-section project-fs">
+            <div class="fs-content reverse">
+                <div class="project-details">
+                    <span class="project-tag">Music Video</span>
+                    <h2>Neon Nights</h2>
+                    <p>VFX & Color Grading</p>
+                    <button class="btn primary">Watch Video</button>
+                </div>
+                <div class="video-card-fs">
+                    <div class="placeholder-img"></div>
+                    <div class="play-btn"><i data-lucide="play"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Contact (Combined for now or separate) -->
+        <section id="about" class="fullscreen-section center-fs">
+            <div class="container about-layout-fs">
+                <div class="about-text">
+                    <h2>Sobre Mim</h2>
+                    <p>Desenhando experiências visuais que conectam marcas e pessoas.</p>
+                    <div class="skills">
+                        <span class="tag">Premiere</span>
+                        <span class="tag">After Effects</span>
+                        <span class="tag">Three.js</span>
+                    </div>
+                    <br>
+                    <a href="mailto:email@exemplo.com" class="btn primary">Contato</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="background.js"></script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Portfólio. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
